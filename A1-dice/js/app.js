@@ -1,20 +1,27 @@
+// VARIABLES
+// Buttons
+let button0: HTMLElement = document.getElementById("button0");
 
+// Texts
+let playerRollText: HTMLElement = document.getElementById("playerRollText");
 
-//texts
+// Data
+let playerRoll: number = 0;
 
-//Data
-let playerRoll = 0;
-
-//Buttons
-botton = addEventListener("click", function(){
-  getRandomNumberForPlayer();
+// PROCESSES
+button0.addEventListener("click", function (): void {
+  getRandomNumberOneToSixForPlayer();
+  showPlayerRollResult();
 });
 
-
-//controllers
-function getRandomNumberForPlayer() {
+// CONTROLLERS
+function getRandomNumberOneToSixForPlayer(): void {
   playerRoll = Math.floor(Math.random() * 6) + 1;
 }
 
-//views
-function play() {}
+// VIEWS
+function showPlayerRollResult(): void {
+  playerRollText.innerHTML = playerRoll;
+}
+
+
