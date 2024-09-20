@@ -1,12 +1,17 @@
 // VARIABLES
-
+let win = 0;
+let loss = 0;
+let draw = 0;
 
 // Buttons
-const button0 = document.getElementById("button0"); // Ingen typdefiniering behövs i vanlig JS
+const button0 = document.getElementById("button0");
 
 // Texts
-const playerRollText = document.getElementById("playerRollText"); // Ingen typdefiniering här heller
+const playerRollText = document.getElementById("playerRollText");
 const aiRollText = document.getElementById("aiRollText");
+const winText = document.getElementById("Win");
+const lossText = document.getElementById("Loss");
+const drawText = document.getElementById("Draw");
 
 // Data
 let playerRoll = 0;
@@ -15,27 +20,46 @@ let aiRoll = 0;
 // PROCESSES
 button0.addEventListener("click", function () {
   getRandomNumberOneToSixForPlayer();
-  showPlayerRollResult();
-
-  button0.addEventListener("click", function () {
-    getRandomNumberOneToSixForPlayer();
-    showPlayerRollResult();
-
+  getRandomNumberOneToSixForAi();
+  calculateResult();
 });
 
 // CONTROLLERS
 function getRandomNumberOneToSixForPlayer() {
-  playerRoll = Math.floor(Math.random() * 6) + 1; // Genererar ett nummer mellan 1 och 6
+  playerRoll = Math.floor(Math.random() * 6) + 1;
+  showPlayerRollResult();
 }
-function
-aiRoll = Math.floor(Math.random() * 6) + 1;
+
+function getRandomNumberOneToSixForAi() {
+  aiRoll = Math.floor(Math.random() * 6) + 1;
+  showAiRollResult();
+}
+
+function calculateResult(){
+  if (playerRoll > aiRoll) {
+    win++;
+  } else if (aiRoll > playerRoll) {
+    loss++;
+  } else {
+    draw++;
+  }
+  scoreVisual();
+}
+
+function scoreVisual(){
+  winText.innerHTML = "You win: " + win;
+  lossText.innerHTML = "You lose: " + loss;
+  drawText.innerHTML = "You draw: " + draw;
+}
 
 // VIEWS
 function showPlayerRollResult() {
-  playerRollText.innerHTML = playerRoll.toString(); // Konverterar talet till sträng för säkerhets skull
+  playerRollText.innerHTML = "Player Rolled " + playerRoll;
 }
-  function aiRollResult (){
-  aiRollText.innerHTML = aiRoll.toString();
-  }
+
+function showAiRollResult() {
+  aiRollText.innerHTML = "AI Rolled " + aiRoll;
+}
+
 
 
