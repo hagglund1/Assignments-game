@@ -61,5 +61,56 @@ function showAiRollResult() {
   aiRollText.innerHTML = "AI Rolled = " + aiRoll;
 }
 
-document.cookie = "username = Dill doe; expires=Thu, 29 sep 2024 :00:00 UTC; path=/";
+
+// Cookie management
+document.cookie = "username=John Doe; expires=Thu, 18 Dec 2025 12:00:00 UTC"
+
+let playerScore = 0;
+let aiScore = 0;
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function saveAsCookie() {
+  document.cookie = "playerScoreHistory=" +
+    playerScoreHistory + ";expires=Thu, 18 Dec 2025 12:00:00UTC";
+  document.cookie = "computerScoreHistory=" +
+    computerScoreHistory + ";expires=Thu, 18 Dec 2025 12:00:00UTC";
+}
+let previousPlayerScore = getCookie("playerScoreHistory");
+let previousComputerScore = getCookie("computerScoreHistory");
+
+
+
+if (previousPlayerScore != null) {
+
+}if (previousComputerScore != null) {
+
+}
+
+if (previousPlayerScore != null) {
+  playerScoreHistory.push(previousPlayerScore);
+  playerHistory.innerHTML = previousPlayerScore;
+}
+if (previousComputerScore != null) {
+  computerScoreHistory.push(previousComputerScore);
+  computerHistory.innerHTML = previousComputerScore;
+}
+
+
+
+
 
