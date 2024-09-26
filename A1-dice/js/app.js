@@ -17,11 +17,13 @@ const drawText = document.getElementById("Draw");
 let playerRoll = 0;
 let aiRoll = 0;
 
+loadScoresFromCookies()
 // PROCESSES
 button0.addEventListener("click", function () {
   getRandomNumberOneToSixForPlayer();
   getRandomNumberOneToSixForAi();
   calculateResult();
+  saveScoresToCookies();
 });
 
 // CONTROLLERS
@@ -35,7 +37,7 @@ function getRandomNumberOneToSixForAi() {
   showAiRollResult();
 }
 
-function calculateResult(){
+function calculateResult() {
   if (playerRoll > aiRoll) {
     win++;
   } else if (aiRoll > playerRoll) {
@@ -44,9 +46,10 @@ function calculateResult(){
     draw++;
   }
   scoreVisual();
+  saveScoresToCookies(); // Ensure scores are saved after each round
 }
 
-function scoreVisual(){
+function scoreVisual() {
   winText.innerHTML = "You win: " + win;
   lossText.innerHTML = "You lose: " + loss;
   drawText.innerHTML = "You draw: " + draw;
@@ -61,22 +64,13 @@ function showAiRollResult() {
   aiRollText.innerHTML = "AI Rolled = " + aiRoll;
 }
 
-
-// Cookie management
-document.cookie = "username=John Doe; expires=Thu, 18 Dec 2025 12:00:00 UTC"
-
-let playerScore = 0;
-let aiScore = 0;
-
+// Cookie management functions
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
   for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1);
-    }
+    let c = ca[i].trim();
     if (c.indexOf(name) === 0) {
       return c.substring(name.length, c.length);
     }
@@ -84,33 +78,16 @@ function getCookie(cname) {
   return "";
 }
 
-function saveAsCookie() {
-  document.cookie = "playerScoreHistory=" +
-    playerScoreHistory + ";expires=Thu, 18 Dec 2025 12:00:00UTC";
-  document.cookie = "computerScoreHistory=" +
-    computerScoreHistory + ";expires=Thu, 18 Dec 2025 12:00:00UTC";
-}
-let previousPlayerScore = getCookie("playerScoreHistory");
-let previousComputerScore = getCookie("computerScoreHistory");
-
-
-
-if (previousPlayerScore != null) {
-
-}if (previousComputerScore != null) {
-
+function saveScoresToCookies() {
+  document.cookie = "win=" + win + "; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+  document.cookie = "loss=" + loss + "; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
+  document.cookie = "draw=" + draw + "; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/";
 }
 
-if (previousPlayerScore != null) {
-  playerScoreHistory.push(previousPlayerScore);
-  playerHistory.innerHTML = previousPlayerScore;
+function loadScoresFromCookies() {
+  getCookie("win");
+  getCookie("loss");
+  getCookie("draw");
+
 }
-if (previousComputerScore != null) {
-  computerScoreHistory.push(previousComputerScore);
-  computerHistory.innerHTML = previousComputerScore;
-}
-
-
-
-
 
