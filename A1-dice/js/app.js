@@ -54,12 +54,12 @@ function scoreVisual(){
 
 // VIEWS
 function showPlayerRollResult() {
-  playerRollText.innerHTML = "Player Rolled " + playerRoll;
+  playerRollText.innerHTML = "Player Rolled = " + playerRoll;
 }
 
 function showAiRollResult() {
-  aiRollText.innerHTML = "AI Rolled " + aiRoll;
+  aiRollText.innerHTML = "AI Rolled = " + aiRoll;
 }
 
-
+document.cookie = "username = Dill doe; expires=Thu, 29 sep 2024 :00:00 UTC; path=/";
 
