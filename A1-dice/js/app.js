@@ -46,7 +46,7 @@ function calculateResult() {
     draw++;
   }
   scoreVisual();
-  saveScoresToCookies(); // Ensure scores are saved after each round
+  saveScoresToCookies(); 
 }
 
 function scoreVisual() {
@@ -64,7 +64,7 @@ function showAiRollResult() {
   aiRollText.innerHTML = "AI Rolled = " + aiRoll;
 }
 
-// Cookie management functions
+// Cookie functions
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
