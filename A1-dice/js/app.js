@@ -46,7 +46,7 @@ function calculateResult() {
     draw++;
   }
   scoreVisual();
-  saveScoresToCookies(); 
+  saveScoresToCookies();
 }
 
 function scoreVisual() {
