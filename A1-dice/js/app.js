@@ -85,9 +85,13 @@ function saveScoresToCookies() {
 }
 
 function loadScoresFromCookies() {
-  getCookie("win");
-  getCookie("loss");
-  getCookie("draw");
+  win = Number(getCookie("win")) || 0;
+  loss = Number(getCookie("loss")) || 0;
+  draw = Number(getCookie("draw")) || 0;
+
+  scoreVisual();
 
 }
+
+
 
